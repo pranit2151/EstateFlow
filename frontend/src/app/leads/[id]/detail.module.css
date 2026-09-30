@@ -1,0 +1,148 @@
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.value {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.budget {
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Status Section */
+.statusSection {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.statusButtons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.statusBtn {
+  padding: 6px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-secondary);
+}
+
+.statusBtn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.statusActive {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.statusActive:hover {
+  background: var(--primary-dark);
+  color: white;
+}
+
+/* Notes */
+.noteForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.noteInput {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.noteInput:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.notesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.noteItem {
+  padding: 12px 14px;
+  background: var(--bg);
+  border-radius: 8px;
+  border-left: 3px solid var(--primary);
+}
+
+.noteText {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.noteDate {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+.noNotes {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  text-align: center;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .detailGrid { grid-template-columns: 1fr; }
+  .infoGrid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,84 @@
+// Prisma schema for Real Estate Lead Management CRM
+
+generator client {
+  provider     = "prisma-client-js"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Enums ───────────────────────────────────────────────
+
+enum PropertyType {
+  BHK1       @map("1BHK")
+  BHK2       @map("2BHK")
+  BHK3       @map("3BHK")
+  BHK4       @map("4BHK")
+  Plot
+  Commercial
+}
+
+enum LeadSource {
+  Facebook
+  Google
+  Referral
+  Website
+  Walk_in  @map("Walk-in")
+  Other
+}
+
+enum LeadStatus {
+  New
+  Contacted
+  Site_Visit @map("Site Visit")
+  Closed
+}
+
+// ─── Models ──────────────────────────────────────────────
+
+model User {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  password   String // bcrypt hashed
+  role       String   @default("user")
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Lead {
+  id            Int          @id @default(autoincrement())
+  name          String
+  phone         String       @unique @db.VarChar(10)
+  email         String?
+  budget        Decimal      @db.Decimal(12, 2)
+  location      String
+  property_type PropertyType
+  source        LeadSource
+  status        LeadStatus   @default(New)
+  created_at    DateTime     @default(now())
+  updated_at    DateTime     @updatedAt
+
+  notes Note[]
+
+  @@index([status])
+  @@index([created_at])
+  @@map("leads")
+}
+
+model Note {
+  id         Int      @id @default(autoincrement())
+  text       String
+  lead_id    Int
+  created_at DateTime @default(now())
+
+  lead Lead @relation(fields: [lead_id], references: [id], onDelete: Cascade)
+
+  @@index([lead_id])
+  @@map("lead_notes")
+}
