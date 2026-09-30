@@ -1,6 +1,6 @@
 import {
   IsString, IsEmail, IsOptional, IsNumber,
-  IsEnum, Matches, IsPositive,
+  IsEnum, Matches, IsPositive, Max,
 } from 'class-validator';
 import { PropertyType, LeadSource, LeadStatus } from '../entities/lead.entity';
 
@@ -21,6 +21,7 @@ export class UpdateLeadDto {
 
   @IsNumber()
   @IsPositive()
+  @Max(9999999999, { message: 'Budget must be less than 10 billion' })
   @IsOptional()
   budget?: number;
 
