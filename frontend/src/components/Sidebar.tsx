@@ -18,15 +18,15 @@ export default function Sidebar() {
   };
 
   const navItems = [
-    { href: '/dashboard', label: 'Dashboard', icon: '📊' },
-    { href: '/leads', label: 'Leads', icon: '👥' },
-    { href: '/leads/new', label: 'Add Lead', icon: '➕' },
+    { href: '/dashboard', label: 'Dashboard', icon: '' },
+    { href: '/leads', label: 'Leads', icon: '' },
+    { href: '/leads/new', label: 'Add Lead', icon: '' },
   ];
 
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logo}>
-        <span className={styles.logoIcon}>🏠</span>
+        <span className={styles.logoIcon}>EF</span>
         <h1>EstateFlow</h1>
       </div>
 

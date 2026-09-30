@@ -33,7 +33,7 @@ export default function LoginPage() {
   return (
     <div className="authPage">
       <div className="authCard">
-        <h1>🏠 EstateFlow</h1>
+        <h1>EstateFlow</h1>
         <p className="subtitle">Sign in to your CRM account</p>
 
         {error && <div className="errorMsg">{error}</div>}
