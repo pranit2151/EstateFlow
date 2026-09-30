@@ -79,6 +79,7 @@ Runs on `localhost:5432` with database `realestate_crm`.
 ```bash
 cd backend
 npm install
+npx prisma db push          # Pushes the schema to PostgreSQL
 npx ts-node src/seed.ts     # Populates demo admin & 12 leads
 npm run start:dev            # Starts server on http://localhost:5000/api
 ```
