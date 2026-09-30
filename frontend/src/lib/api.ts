@@ -29,7 +29,9 @@ async function apiFetch(url: string, options: RequestInit = {}) {
     throw new Error('Unauthorized');
   }
 
-  const data = await res.json();
+  const text = await res.text();
+  const data = text ? JSON.parse(text) : {};
+
   if (!res.ok) {
     throw new Error(data.message || 'Something went wrong');
   }
