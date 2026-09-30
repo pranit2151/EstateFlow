@@ -1,6 +1,6 @@
 # Real Estate Lead Management System (Mini CRM)
 
-A full-stack, production-ready Real Estate Lead Management System built with **Next.js (React + TypeScript)** on the frontend and **NestJS (Node.js + TypeScript + TypeORM)** on the backend, with **PostgreSQL** in Docker.
+A full-stack, production-ready Real Estate Lead Management System built with **Next.js (React + TypeScript)** on the frontend and **NestJS (Node.js + TypeScript + Prisma)** on the backend, with **PostgreSQL** in Docker.
 
 ---
 
@@ -15,7 +15,7 @@ A full-stack, production-ready Real Estate Lead Management System built with **N
 ### Backend
 - **Framework**: NestJS (Node.js)
 - **Language**: TypeScript (OOP, Dependency Injection, Decorators)
-- **Database ORM**: TypeORM (PostgreSQL 16)
+- **Database ORM**: Prisma (PostgreSQL 16)
 - **Validation**: `class-validator` + `class-transformer` via global `ValidationPipe`
 - **Security & Auth**: Passport JWT + Bcrypt password hashing
 - **Containerization**: Docker Compose (`lead_crm_postgres`)
@@ -31,10 +31,10 @@ assignment/
 │   │   ├── auth/              # JWT Auth, Register, Login, Strategy, Guards
 │   │   ├── leads/             # Leads CRUD, Filters, Search, Pagination
 │   │   │   ├── dto/           # CreateLeadDto, UpdateLeadDto, UpdateStatusDto
-│   │   │   └── entities/      # Lead entity (TypeORM)
+│   │   │   └── entities/      # Lead entity (Prisma)
 │   │   ├── notes/             # Lead Notes (One-to-Many relation with cascade)
 │   │   ├── dashboard/         # Aggregated stats (total, closed, conversion rate)
-│   │   ├── app.module.ts      # Root NestJS module connecting TypeORM & features
+│   │   ├── app.module.ts      # Root NestJS module connecting Prisma & features
 │   │   ├── main.ts            # Entrypoint with CORS, prefix, global ValidationPipe
 │   │   └── seed.ts            # Database seeder (admin user + 12 realistic leads)
 │   ├── .env                   # DB configuration & JWT secrets
@@ -114,7 +114,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 4. **Robust Validation & Error Handling**:
    - Input payloads strongly typed with DTOs using `class-validator` (`@Matches(/^\d{10}$/)` for Indian phone numbers, `@IsPositive()` for budget, `@IsEnum()`).
    - Global `ValidationPipe` with `whitelist: true` and `forbidNonWhitelisted: true`.
-   - Unique constraint errors (Postgres `23505`) gracefully mapped to `409 Conflict`.
+   - Unique constraint errors (Prisma `P2002`) gracefully mapped to `409 Conflict`.
 
 5. **Clean Next.js Frontend Architecture**:
    - Next.js App Router with React client components.
